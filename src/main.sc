@@ -1,6 +1,9 @@
 require: slotfilling/slotFilling.sc
   module = sys.zb-common
 theme: /
+    state:start
+        intent!:/start
+        a:начинаем
     state: hello
         q!: *(прив*/здравствуй*/ку*)*
         a: Привет привет
