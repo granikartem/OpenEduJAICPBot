@@ -2,22 +2,23 @@ require: slotfilling/slotFilling.sc
   module = sys.zb-common
 theme: /
 
-    state: Start
-        q!: $regex</start>
-        a: Начнём.
 
-    state: Hello
-        intent!: /привет
+
+    state: hello
+        q!: /привет
         a: Привет привет
 
-    state: Bye
-        intent!: /пока
-        a: Пока пока
+    state: weather
+        q!: *(погод*) *
+        random:
+            a: Погодка сегодня не очень
+            a: Отличная погода на улице
+            
+    state: currency
+        q: *(курс*) (валют*/доллар*/евро/йен*)*
+        a: Я не располагаю подобной информацией
 
     state: NoMatch
         event!: noMatch
         a: Я не понял. Вы сказали: {{$request.query}}
 
-    state: Match
-        event!: match
-        a: {{$context.intent.answer}}
